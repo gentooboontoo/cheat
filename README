@@ -1,0 +1,14 @@
+= Cheat =
+Cheat is a simple command-line tool to edit and view local cheatsheets in console.
+
+Cheatsheets are stored as plain files under $HOME/.cheat directory.
+
+== Usage ==
+List cheatsheets
+  cheat -l
+
+View cheatsheet
+  cheat CHEATSHEET
+
+Edit
+  cheat -e CHEATSHEET

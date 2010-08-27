@@ -1,0 +1,38 @@
+#!/usr/bin/ruby
+require "optparse"
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: cheat [options]"
+
+  opts.on("-e", "--edit", "Edit cheatsheet") do |e|
+    options[:edit] = e
+  end
+
+  opts.on("-l", "--list", "List cheatsheets") do |l|
+    options[:list] = l
+  end
+end.parse!
+
+cheat_path = File.join(ENV["HOME"], '.cheat')
+FileUtils.mkdir cheat_path unless File.exist?(cheat_path)
+Dir.chdir(cheat_path)
+
+if(ARGV.length == 1)
+  if(options[:edit])
+    system("$EDITOR #{ARGV[0]}")
+  end
+
+  if(options.empty?)
+    puts `cat #{ARGV[0]}`
+  end
+elsif(ARGV.length == 0)
+  if(options.empty? or options[:list])
+    #Dir.foreach(cheat_path) do |cheatfile|
+    #  puts cheatfile
+    #end
+    puts Dir["*"]
+  end
+
+end
+
