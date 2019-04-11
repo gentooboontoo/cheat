@@ -31,7 +31,7 @@ elsif(ARGV.length == 0)
     #Dir.foreach(cheat_path) do |cheatfile|
     #  puts cheatfile
     #end
-    puts Dir["*"]
+    puts Dir["*"].sort
   end
 
 end
